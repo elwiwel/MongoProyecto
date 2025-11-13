@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap');
+
+html, body{
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-image: radial-gradient(circle, rgb(11, 11, 42), rgb(1, 62, 33));
+    color: black;
+}
+
+#login{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: rgb(211, 211, 211);
+    border-radius: 15px;
+    width: 25rem;
+    height: auto;
+    color: black;
+}
+
+#login h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#login h2{
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#credenciales{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0;
+    width: 90%;
+}
+
+#credenciales input{
+    height: 2rem;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#credenciales label{
+    font-family: "Stack Sans Text";
+    font-size: 0.85rem;
+    color: rgb(44, 44, 44);
+    
+}
+
+#credenciales button{
+    width: fit-content;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-self: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: darkgreen;
+    color: white;
+    font-family: "Stack Sans Text";
+}

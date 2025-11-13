@@ -5,10 +5,7 @@ class AlbumesController {
     listarAlbumes = async (req, res) => {
         try{
             const albumes = await Album.find();
-            res.json({
-                success: true,
-                data: albumes,
-                total: albumes.length});
+            res.json(albumes);
             console.log("Archivos leídos")
         }
         catch (error) {

@@ -23,16 +23,16 @@ app.get("/", (req, res) => {
 });
 
 
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
-app.get("/test-db", async (req, res) => {
-  try {
-    const collections = await mongoose.connection.db.listCollections().toArray();
-    res.json({ message: "Conectado a la BD", collections });
-  } catch (error) {
-    res.status(500).json({ error: "Error al acceder a la BD", details: error });
-  }
-});
+// app.get("/test-db", async (req, res) => {
+//   try {
+//     const collections = await mongoose.connection.db.listCollections().toArray();
+//     res.json({ message: "Conectado a la BD", collections });
+//   } catch (error) {
+//     res.status(500).json({ error: "Error al acceder a la BD", details: error });
+//   }
+// });
 
 
 const PORT = process.env.PORT || 3000;

@@ -7,10 +7,10 @@ const albumSchema = new mongoose.Schema({
   img: { type: String, required: true },
   canciones: { type: Number, required: true },
   duracion: { type: String, required: true },
-  generos: { 
-    type: String, 
-    enum: ["Rock progresivo", "Grunge", "Hard rock", "Hip hop, Rock acústico"], 
-    required: true 
+  generos: {
+    type: String,
+    enum: ["Rock progresivo", "Grunge", "Hard rock", "Hip hop, Rock acústico"],
+    required: true
   }
 });
 
