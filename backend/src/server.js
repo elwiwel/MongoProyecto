@@ -2,8 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
+import { fileURLToPath } from "url";
 import { connectDB } from "./config/db.js";
 import albumesRoutes from "./routes/albumes.routes.js" //Importamos las rutas de productos
+import usuariosRoutes from "./routes/usuarios.routes.js";
 
 //Cargar variables del archivo .env
 dotenv.config();
@@ -15,14 +17,22 @@ app.use(cors());
 //Conecto a Mongo
 await connectDB();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const frontend = path.join(__dirname, "../");
+const reactDistPath = path.join(frontend, "..", "frontend", "anchelotify", "dist");
 
+console.log("Ruta donde Express busca React:", reactDistPath);
+
+app.use(express.static(path.join(reactDistPath)));
 
 //Ruta base
-app.use("/api/albumes", albumesRoutes);
+app.use("/api/usuarios", usuariosRoutes);
 
 app.get("/", (req, res) => {
     
-    res.send("Servidor funcionando correctamente")
+    res.sendFile(path.join(reactDistPath, "index.html"));
+
 });
 
 
