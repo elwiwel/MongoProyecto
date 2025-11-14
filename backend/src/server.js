@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 import { connectDB } from "./config/db.js";
 import albumesRoutes from "./routes/albumes.routes.js" //Importamos las rutas de productos
 
@@ -13,6 +14,8 @@ app.use(cors());
 
 //Conecto a Mongo
 await connectDB();
+
+
 
 //Ruta base
 app.use("/api/albumes", albumesRoutes);
