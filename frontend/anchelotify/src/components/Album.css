@@ -1,0 +1,67 @@
+.albumcard{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+}
+
+.album-cover{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+}
+
+.album-cover:hover{
+    transform: scale(1.05);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: rgb(236, 137, 137) 0px 0px 10px 2px;
+}
+
+.album-cover-hover{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transform: scale(1.05);
+    transition: all 0.5s ease-in-out;
+    box-shadow: rgb(236, 137, 137) 0px 0px 10px 2px;
+    cursor: pointer;
+}
+
+.album-title{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+    justify-self: center;
+}
+
+.album-title:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.album-info{
+    display: flex;
+    flex-direction: flex;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+    justify-self: center;
+}
+
+.album-year, .album-artist{
+    font-size: 0.9em;
+    color: rgb(156, 156, 156);
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    margin-top: 0.1rem;
+}
+
+.album-artist:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

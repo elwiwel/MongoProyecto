@@ -72,7 +72,7 @@ function Login() {
             </form>
 
             <p id="preg">¿No tienes una cuenta?</p>
-            <Link to={"/register"} id="volver">Regístrate</Link>
+            <Link to={"/register"} id="register">Regístrate</Link>
             
         </div>
         </>
