@@ -1,29 +1,37 @@
+import { Link } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
 
 function Login() {
 
+    const [correo, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
+
+    function register(){
+
+    }
     
 
     async function submit(ev) {
         ev.preventDefault();
 
-        const URL_API = "http://localhost:4000/api/usuarios";
+        const URL_API = "http://localhost:4000/api/usuarios/login";
 
-            //Usar ev.target en React. Si no, no funciona
 
-        console.log("Tu correo es:", email);
+        console.log("Correo:", correo);
+        console.log("Password:", password);
 
-        if (!email || !contraseña) {
+        if (!correo || !password) {
             alert("Rellene todos los campos, por favor");
+            return;
         }
         else {
             try {
                 const res = await fetch(URL_API, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email })
+                    body: JSON.stringify({correo, password})
                 });
 
                 if (!res.ok) {
@@ -34,6 +42,10 @@ function Login() {
                 const data = await res.json();
 
                 console.log(data);
+
+                if(data.contraseña === true) {
+                    alert("Sesión iniciada correctamente");
+                }
             }
             catch (error) {
                 console.error(error.message);
@@ -42,8 +54,9 @@ function Login() {
     }
 
     return (
+        <>
+        <h1 id="titulo">Anchelotify</h1>
         <div id="login">
-            <h1>Anchelotify</h1>
             <h2>Inicia sesión</h2>
             <form id="credenciales" onSubmit={submit}>
                 <div>
@@ -51,13 +64,18 @@ function Login() {
                     <input type="email" id="correo" name="correo" value={correo} onChange={e => setEmail(e.target.value)}/>
                 </div>
                 <div>
-                    <label htmlFor="contraseña">Contraseña:</label> <br />
-                    <input type="password" id="contraseña" name="contraseña" value={password} onChange={e => setPassword(e.target.value)}/>
+                    <label htmlFor="password">Contraseña:</label> <br />
+                    <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </div>
 
-                <button id="submit" type="submit">Entrar</button>
+                <button id="submit" type="submit" onClick={()=>{console.log("Botón clicado")}}>Entrar</button>
             </form>
+
+            <p id="preg">¿No tienes una cuenta?</p>
+            <Link to={"/register"} id="volver">Regístrate</Link>
+            
         </div>
+        </>
     )
 }
 
