@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Album from "../components/Album";
+import Header from "../components/Header";
 import "./Main.css";
 
 function Main() {
@@ -23,8 +24,8 @@ function Main() {
     }, []);
 
     return (
-        <div>
-            <div id="header"></div>
+        <div id="main-container">
+            <Header/>
 
             <div id="grid-album">
                 {albums.map(album => (

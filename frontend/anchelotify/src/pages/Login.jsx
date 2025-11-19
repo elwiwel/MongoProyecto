@@ -8,10 +8,10 @@ function Login() {
     const [password, setPassword] = useState("");
 
 
-    function register(){
+    function register() {
 
     }
-    
+
 
     async function submit(ev) {
         ev.preventDefault();
@@ -31,7 +31,7 @@ function Login() {
                 const res = await fetch(URL_API, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({correo, password})
+                    body: JSON.stringify({ correo, password })
                 });
 
                 if (!res.ok) {
@@ -43,7 +43,7 @@ function Login() {
 
                 console.log(data);
 
-                if(data.contraseña === true) {
+                if (data.contraseña === true) {
                     alert("Sesión iniciada correctamente");
                 }
             }
@@ -54,28 +54,28 @@ function Login() {
     }
 
     return (
-        <>
-        <h1 id="titulo">Anchelotify</h1>
-        <div id="login">
-            <h2>Inicia sesión</h2>
-            <form id="credenciales" onSubmit={submit}>
-                <div>
-                    <label htmlFor="correo">Correo electrónico:</label> <br />
-                    <input type="email" id="correo" name="correo" value={correo} onChange={e => setEmail(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="password">Contraseña:</label> <br />
-                    <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
-                </div>
+        <div id="login-container">
+            <h1 id="titulo">Anchelotify</h1>
+            <div id="login">
+                <h2>Inicia sesión</h2>
+                <form id="credenciales" onSubmit={submit}>
+                    <div>
+                        <label htmlFor="correo">Correo electrónico:</label> <br />
+                        <input type="email" id="correo" name="correo" value={correo} onChange={e => setEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Contraseña:</label> <br />
+                        <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+                    </div>
 
-                <button id="submit" type="submit" onClick={()=>{console.log("Botón clicado")}}>Entrar</button>
-            </form>
+                    <button id="submit" type="submit" onClick={() => { console.log("Botón clicado") }}>Entrar</button>
+                </form>
 
-            <p id="preg">¿No tienes una cuenta?</p>
-            <Link to={"/register"} id="register">Regístrate</Link>
-            
+                <p id="preg">¿No tienes una cuenta?</p>
+                <Link to={"/register"} id="register">Regístrate</Link>
+
+            </div>
         </div>
-        </>
     )
 }
 

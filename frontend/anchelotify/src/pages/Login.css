@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap');
 
-html, body{
+#login-container{
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     width: 100%;
-    margin: 0;
     background-image: radial-gradient(circle, rgb(11, 11, 42), rgb(1, 62, 33));
     color: black;
 }

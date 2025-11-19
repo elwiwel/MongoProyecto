@@ -48,7 +48,7 @@ function Register() {
                 } else if (data.existe === true) {
                     alert("Este correo ya existe. Por favor, introduzca otro.") //Hacer una tarjetita que salga por el lado
                 }
-                
+
 
             }
             catch (error) {
@@ -58,30 +58,31 @@ function Register() {
     }
 
     return (
+        <div id="register-container">
+            <div id="login">
+                <h2>Introduce tus datos:</h2>
+                <p id="subt">(Todos los campos son obligatorios)</p>
+                <form id="credenciales" onSubmit={submit}>
 
-        <div id="login">
-            <h2>Introduce tus datos:</h2>
-            <p id="subt">(Todos los campos son obligatorios)</p>
-            <form id="credenciales" onSubmit={submit}>
+                    <div>
+                        <label htmlFor="nombre">Nombre:</label> <br />
+                        <input type="nombre" id="nombre" name="nombre" value={nombre} onChange={e => setName(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="correo">Correo electrónico:</label> <br />
+                        <input type="email" id="correo" name="correo" value={correo} onChange={e => setEmail(e.target.value)} />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Contraseña:</label> <br />
+                        <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+                    </div>
 
-                <div>
-                    <label htmlFor="nombre">Nombre:</label> <br />
-                    <input type="nombre" id="nombre" name="nombre" value={nombre} onChange={e => setName(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="correo">Correo electrónico:</label> <br />
-                    <input type="email" id="correo" name="correo" value={correo} onChange={e => setEmail(e.target.value)} />
-                </div>
-                <div>
-                    <label htmlFor="password">Contraseña:</label> <br />
-                    <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
-                </div>
+                    <button id="submit" type="submit">Crear cuenta</button>
+                </form>
+                <p id="feedback"></p>
 
-                <button id="submit" type="submit">Crear cuenta</button>
-            </form>
-            <p id="feedback"></p>
-
-            <Link to={"/"} id="volver">Volver a inicio de sesión</Link>
+                <Link to={"/"} id="volver">Volver a inicio de sesión</Link>
+            </div>
         </div>
 
     )

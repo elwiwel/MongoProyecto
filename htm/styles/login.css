@@ -2,7 +2,7 @@
 
 html, body{
     box-sizing: border-box;
-    display: flex;
+    
     height: 100%;
     width: 100%;
     margin: 0;
@@ -10,7 +10,7 @@ html, body{
 }
 
 #login{
-    display: flex;
+    
     flex-direction: column;
     gap: 10px;
     align-self: center;
