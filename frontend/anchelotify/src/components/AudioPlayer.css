@@ -1,0 +1,48 @@
+.player{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: auto;
+    height: 8rem;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(44, 44, 44);
+}
+
+.player img{
+    width: 8rem;
+}
+
+.cancion{
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cancion input{
+    width: 30rem;
+}
+
+.duracion{
+    display: flex;
+    justify-content: space-between;
+}
+
+.duracion p{
+    margin: 0;
+}
+
+.cancion button{
+    align-self: center;
+    background-color: azure;
+    color: black;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}

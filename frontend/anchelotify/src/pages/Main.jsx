@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import Album from "../components/Album";
 import Header from "../components/Header";
 import "./Main.css";
+import AudioPlayer from "../components/AudioPlayer";
+
+import testaudio from "../assets/audio/downinahole.mp3";
 
 function Main() {
 
@@ -39,6 +42,8 @@ function Main() {
                     />
                 ))}
             </div>
+
+            <AudioPlayer audioSrc={testaudio}/>
         </div>
     );
 }

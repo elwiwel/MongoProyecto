@@ -7,7 +7,7 @@
     justify-content: center;
     background-color: black;
     width: auto;
-    height: 10vh;
+    height: 70px;
     align-items: center;
 }
 
@@ -16,7 +16,9 @@
     margin: 0;
     padding: 0.5rem;
     width: 25rem;
-    height: 2rem;
+    height: 30px;
+    min-height: 10px;
+    max-height: 50px;
     border: rgb(98, 98, 98) 2px solid;
     border-radius: 5rem;
     font-size: medium;
