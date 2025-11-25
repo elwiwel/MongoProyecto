@@ -1,0 +1,32 @@
+.song-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-left: 2rem;
+    border-bottom: 1px solid #ddd;
+    background-color: rgb(15, 15, 15);
+}
+
+.izq{
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.datos{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.song-artist{
+    color: rgb(255, 255, 255);
+    font-size: 0.9em;
+}
+
+.song-duration{
+    color: rgb(156, 156, 156);
+    font-size: 0.9em;
+    align-self: center;
+    margin-right: 1rem;
+}

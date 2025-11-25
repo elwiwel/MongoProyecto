@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { connectDB } from "./config/db.js";
 import albumesRoutes from "./routes/albumes.routes.js" //Importamos las rutas de productos
 import usuariosRoutes from "./routes/usuarios.routes.js";
+import cancionesRoutes from "./routes/canciones.routes.js";
 
 //Cargar variables del archivo .env
 dotenv.config();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(reactDistPath)));
 //Ruta base
 app.use("/api/albumes", albumesRoutes);
 app.use("/api/usuarios", usuariosRoutes);
+app.use("/api/canciones", cancionesRoutes);
 
 app.get("/", (req, res) => {
     

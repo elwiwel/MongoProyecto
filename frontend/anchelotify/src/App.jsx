@@ -3,6 +3,7 @@ import './App.css'
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Main from "./pages/Main";
+import AlbumPage from "./pages/AlbumPage";
 
 function App() {
   

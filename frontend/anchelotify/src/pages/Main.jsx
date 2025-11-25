@@ -32,7 +32,6 @@ function Main() {
 
             <div id="grid-album">
                 {albums.map(album => (
-                    console.log(album.img),
                     <Album
                         key={album.id || album.nombre} // ⬅️ IMPORTANTE
                         img={album.img}
