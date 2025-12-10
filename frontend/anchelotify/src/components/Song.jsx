@@ -2,7 +2,7 @@ import "./Song.css";
 
 
 
-function Song({ number, title, artist, duration }) {
+function Song({ number, title, artist, album, duration }) {
 
     function formatoDuracion(duracion) {
         const minutes = Math.floor(duracion / 60);
@@ -20,6 +20,7 @@ function Song({ number, title, artist, duration }) {
                     <div className="song-artist">{artist}</div>
                 </div>
             </div>
+            <div className="song-album">{album}</div>
             <div className="song-duration">{formatoDuracion(duration)}</div>
         </div>
     );

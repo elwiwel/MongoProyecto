@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
 import "./Album.css";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Album({ img, title, artist, year, color }) {
 
+    const navigate = useNavigate();
     const pref = useRef(null);
 
     function hover() {
@@ -27,12 +30,7 @@ function Album({ img, title, artist, year, color }) {
                 });
 
             const data = await res.json();
-            console.log("Datos del álbum:", data);
-            console.log("ID del álbum:", data._id);
-            
-            const songres = await fetch(`http://localhost:4000/api/canciones/album/${data._id}`);
-            const songdata = await songres.json();
-            console.log("Canciones del álbum:", songdata);
+            navigate(`/album/${data._id}`);
             
         } catch (error) {
             console.error("Error al manejar el clic en el álbum", error);
