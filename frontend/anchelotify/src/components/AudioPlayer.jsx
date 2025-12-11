@@ -82,7 +82,7 @@ function AudioPlayer({ audioSrc }) {
                 />
 
                 {/* Elemento audio para reproducir */}
-                <audio ref={audioref} src={audioSrc} />
+                <audio ref={audioref} src={`http://localhost:4000/api/canciones/stream/${nombreCancion}`} />
 
                 {/* Enseñar el tiempo y la duración de la canción */}
                 <div className="duracion">
