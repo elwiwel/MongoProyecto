@@ -3,9 +3,11 @@ import cancionesController from "../controllers/canciones.controller.js";
 
 const route = express.Router();
 
+route.get("/:id", cancionesController.obtenerCancion);
+
 route.get("/album/:id", cancionesController.listarCanciones); //Obtener canciones de un álbum
 //route.get("/:id", cancionesController.obtenerAlbum); //Buscar por id
 
-route.get("/stream/:nombre", cancionesController.getCancionStream);
+route.get("/stream/:id", cancionesController.getCancionStream);
 
 export default route;

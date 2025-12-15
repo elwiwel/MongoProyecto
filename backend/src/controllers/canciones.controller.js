@@ -1,5 +1,7 @@
 import Cancion from "../models/Cancion.js";
 import mongodb, { MongoClient } from "mongodb";
+import { ObjectId } from "mongodb";
+import mongoose from "mongoose";
 
 class CancionesController {
 
@@ -16,20 +18,33 @@ class CancionesController {
     }
 
 
+
+    obtenerCancion = async (req, res) => {
+        try {
+            const id = req.params.id;
+
+            const cancion = await Cancion.findOne({_id: id});
+            res.json(cancion);
+            console.log("Canción obtenida:", cancion);
+            console.log("id archivo:", cancion.archivo);
+        } catch (error) {
+            console.error("No se ha obtenido la canción:", error);
+        }
+    }
+
     
 
     getCancionStream = async (req, res) => {
     try {
-        const nombre = req.params.nombre;
+        const idCancion = req.params.id;
 
-        const client = await MongoClient.connect(process.env.MONGODB_URI);
-        const db = client.db("musica");
+        const db = mongoose.connection.db;
 
         const bucket = new mongodb.GridFSBucket(db, {
             bucketName: "cancionesBucket"
         });
 
-        const downloadStream = bucket.openDownloadStreamByName(nombre);
+        const downloadStream = bucket.openDownloadStream(new ObjectId(idCancion));
 
         // Tipo MIME básico (puedes mejorarlo por extensión)
         res.set("Content-Type", "audio/mpeg");

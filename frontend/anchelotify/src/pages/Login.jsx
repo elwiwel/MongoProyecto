@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
 
@@ -7,6 +7,7 @@ function Login() {
     const [correo, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
 
     function register() {
 
@@ -17,7 +18,6 @@ function Login() {
         ev.preventDefault();
 
         const URL_API = "http://localhost:4000/api/usuarios/login";
-
 
         console.log("Correo:", correo);
         console.log("Password:", password);
@@ -45,6 +45,7 @@ function Login() {
 
                 if (data.contraseña === true) {
                     alert("Sesión iniciada correctamente");
+                    navigate(`/main`);
                 }
             }
             catch (error) {

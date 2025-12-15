@@ -1,37 +1,66 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./AudioPlayer.css";
 import testcover from "../assets/img/alice.jpg";
+import { useLocation } from "react-router-dom";
 
-function AudioPlayer({ audioSrc }) {
+function AudioPlayer({ audioUrl }) {
 
     //Variables de estados para saber si está pausado y el tiempo
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
 
-    const audioref = useRef(null);
+    const audioRef = useRef(null);
+
+
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log(location.pathname);
+        if (location.pathname == "/" || location.pathname == "/register") {
+            document.querySelector(".player").classList.add("hidden");
+        } else {
+            document.querySelector(".player").classList.remove("hidden");
+        }
+    }, [location])
+
+    
+    useEffect(() => {
+        if (audioUrl && audioRef.current) {
+            const audio = audioRef.current;
+            audioRef.current.src = audioUrl;
+            setCurrentTime(0);
+            setDuration(0);
+            audio.addEventListener("timeupdate", handleTimeUpdate); //Lo puse para probar
+        
+        audioRef.current.play()
+            .then(() => setIsPlaying(true))
+            .catch(err => console.warn("Autoplay bloqueado:", err));
+        }
+    }, [audioUrl]);
 
     //Función para buscar un momento específico de la canción
     const handleSeek = (e) => {
-        audioref.current.currentTime = e.target.value;
+        audioRef.current.currentTime = e.target.value;
         setCurrentTime(e.target.value);
     }
 
     //Actualizar tiempo de la canción y duración
     function handleTimeUpdate() {
-        setCurrentTime(audioref.current.currentTime);
-        setDuration(audioref.current.duration);
+        setCurrentTime(audioRef.current.currentTime);
+        setDuration(audioRef.current.duration);
     }
 
     const handlePlay = () => {
 
-        audioref.current.play();
+        audioRef.current.play();
         setIsPlaying(true);
+
     }
 
     function handlePause() {
 
-        audioref.current.pause();
+        audioRef.current.pause();
         setIsPlaying(false);
     }
 
@@ -54,7 +83,7 @@ function AudioPlayer({ audioSrc }) {
 
     //Efecto para detectar el cambio de tiempo de la canción y actualizarlo
     useEffect(() => {
-        const audio = audioref.current;
+        const audio = audioRef.current;
         if (!audio) return;
 
         audio.addEventListener("timeupdate", handleTimeUpdate);
@@ -82,7 +111,7 @@ function AudioPlayer({ audioSrc }) {
                 />
 
                 {/* Elemento audio para reproducir */}
-                <audio ref={audioref} src={`http://localhost:4000/api/canciones/stream/${nombreCancion}`} />
+                <audio ref={audioRef} src={audioUrl}/>
 
                 {/* Enseñar el tiempo y la duración de la canción */}
                 <div className="duracion">

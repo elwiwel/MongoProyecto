@@ -5,21 +5,23 @@ import Register from "./pages/Register";
 import Main from "./pages/Main";
 import AlbumPage from "./pages/AlbumPage";
 import AudioPlayer from "./components/AudioPlayer";
+import { useState } from "react";
 
 function App() {
 
+  const [currentSongUrl, setcurrentSongUrl] = useState(null);
 
   return (
     <div>
       <div className="content">
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/album/:id" element={<AlbumPage />} />
+          <Route path="/album/:id" element={<AlbumPage setCurrentSongUrl={setcurrentSongUrl}/>} />
         </Routes>
       </div>
-      <AudioPlayer />
+      <AudioPlayer audioUrl={currentSongUrl}/>
     </div>
   )
 }

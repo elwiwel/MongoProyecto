@@ -1,9 +1,9 @@
-#header{
+#header {
     position: sticky;
     z-index: 100;
     top: 0;
     display: flex;
-    gap: 1rem;
+    gap: 4rem;
     justify-content: center;
     background-color: black;
     width: auto;
@@ -11,7 +11,29 @@
     align-items: center;
 }
 
-#search{
+.home {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    left: 50px;
+    width: 70px;
+    height: 70px;
+    margin: 0;
+}
+
+.home-link{
+    justify-items: center;
+}
+
+.home-img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    display: block;
+    position: 0;
+}
+
+#search {
     background: rgb(29, 29, 29);
     margin: 0;
     padding: 0.5rem;
@@ -26,7 +48,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-#search::placeholder{
+#search::placeholder {
     color: rgb(112, 112, 112);
     font-size: 1.2rem;
     margin: 0;
@@ -35,35 +57,35 @@
     transition: all 0.3s ease-in-out;
 }
 
-#search:hover{
+#search:hover {
     transition: all 0.3s ease-in-out;
     background-color: rgb(43, 43, 43);
     border: rgb(252, 252, 252) 2px solid;
     color: rgb(255, 255, 255);
 }
 
-#search:hover::placeholder{
+#search:hover::placeholder {
     transition: all 0.3s ease-in-out;
     opacity: 0%;
 }
 
-#search:focus{
+#search:focus {
     background-color: rgb(43, 43, 43);
     border: rgb(252, 252, 252) 2px solid;
 }
 
-#search:focus::placeholder{
+#search:focus::placeholder {
     opacity: 0%;
 }
 
-#flex{
+#flex {
     display: flex;
     position: relative;
     gap: 0;
     align-items: center;
 }
 
-#header img{
+.lupa {
     height: 30px;
     width: 30px;
     margin: 15px;
@@ -73,7 +95,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-#header img:hover{
+#header img:hover {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     transform: scale(1.1);

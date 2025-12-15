@@ -15,6 +15,10 @@
     background-color: rgb(44, 44, 44);
 }
 
+.hidden{
+    display: none;
+}
+
 .player img{
     width: 8rem;
 }

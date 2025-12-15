@@ -4,7 +4,7 @@ import Header from "../components/Header.jsx";
 import Song from "../components/Song.jsx";
 import { useParams } from "react-router-dom";
 
-function AlbumPage() {
+function AlbumPage({setCurrentSongUrl}) {
 
     const [songs, setSongs] = useState([]);
     const {id} = useParams();
@@ -43,11 +43,14 @@ function AlbumPage() {
                     {songs.map((track, index) => (
                     <Song
                         key={track.id || track.titulo} // ⬅️ IMPORTANTE
+                        id={track._id}
+                        idArchivo={track.archivo}
                         number={index + 1}
                         title={track.titulo}
                         artist={track.artista}
                         album={track.album}
                         duration={track.duracion}
+                        setCurrentSongUrl={setCurrentSongUrl}
                     />
                 ))} 
                 </div>
