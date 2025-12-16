@@ -12,6 +12,7 @@ function Song({ id, idArchivo, number, title, artist, album, duration, setCurren
         return `${minutes}:${formattedSeconds}`;
     }
 
+
     async function getSongAudio() {
         try {
             console.log(idArchivo);
@@ -36,7 +37,7 @@ function Song({ id, idArchivo, number, title, artist, album, duration, setCurren
     }
 
     return (
-        <div className="song-row" onClick={getSongAudio}>
+        <div className="song-row" onClick={getSongAudio} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(30, 30, 30, 1)"} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgb(15, 15, 15)"}>
             <div className="izq">
                 <div className="song-number">{number}</div>
                 <div className="datos">

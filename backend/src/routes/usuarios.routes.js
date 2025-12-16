@@ -4,7 +4,7 @@ import usuariosController from "../controllers/usuarios.controller.js";
 const route = express.Router();
 
 
-route.get("/:id", usuariosController.buscarUsuario);
+//route.get("/:id", usuariosController.buscarUsuario);
 
 route.post("/login", usuariosController.buscarUsuario);
 

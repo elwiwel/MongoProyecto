@@ -3,7 +3,7 @@
     justify-content: space-between;
     padding: 1rem;
     padding-left: 2rem;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #aaaaaa;
     background-color: rgb(15, 15, 15);
 }
 
@@ -20,8 +20,14 @@
 }
 
 .song-artist{
-    color: rgb(255, 255, 255);
+    color: rgb(180, 180, 180);
     font-size: 0.9em;
+}
+
+.song-title{
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    font-weight: bold;
 }
 
 .song-duration{
@@ -32,11 +38,15 @@
 }
 
 .song-number{
+    justify-content: center;
     text-align: center;
+    width: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .song-album{
-    color: rgb(200, 200, 200);
+    color: rgb(156, 156, 156);
     font-size: 0.9em;
     align-self: center;
     margin-right: 2rem;
