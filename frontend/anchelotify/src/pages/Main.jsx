@@ -10,6 +10,8 @@ function Main() {
 
     const [albums, setAlbums] = useState([]);
 
+    const [busqueda, setBusqueda] = useState("");
+
     async function fetchAlbums() {
         try {
             const URL_API = "http://localhost:4000/api/albumes/";
@@ -23,12 +25,16 @@ function Main() {
     }
 
     useEffect(() => {
-        fetchAlbums(); // ⬅️ Se ejecuta SOLO al montar
+        fetchAlbums(); // Se ejecuta SOLO al montar
     }, []);
+
+    useEffect(() => {
+        setAlbums(busqueda.length ? busqueda : albums);
+    }, [busqueda]);
 
     return (
         <div id="main-container">
-            <Header/>
+            <Header setBusqueda={setBusqueda} />
 
             <div id="grid-album">
                 {albums.map(album => (
