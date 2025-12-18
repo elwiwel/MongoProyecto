@@ -22,9 +22,9 @@ class AlbumesController {
 
     obtenerAlbum = async (req, res) => {
         try {
-            const {title} = req.body;
-            console.log("Título recibido en el backend:", title);
-            const album = await Album.findOne({nombre: title});
+            const albumId = req.params.id;
+            console.log("ID del álbum recibido en el backend:", albumId);
+            const album = await Album.findById(albumId);
             console.log("Álbum leído:", album);
             res.json(album);
         } catch (error) {

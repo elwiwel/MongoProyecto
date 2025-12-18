@@ -4,7 +4,7 @@ import albumesController from "../controllers/albumes.controllers.js";
 const route = express.Router();
 
 route.get("/", albumesController.listarAlbumes); //Obtener todos los productos
-route.post("/", albumesController.obtenerAlbum); //Buscar por id
+route.get("/:id", albumesController.obtenerAlbum); //Buscar por id
 route.put("/:id", albumesController.actualizarAlbum);
 route.delete("/:id", albumesController.eliminarAlbum);
 

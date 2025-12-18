@@ -1,0 +1,36 @@
+#album-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: brown;
+    margin: 0;
+    height: auto;
+}
+
+#album-cover {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 10px 0 10px 70px;
+    border-radius: 8px;
+    
+}
+
+#album-info {
+    color: white;
+    margin-left: 90px;
+}
+
+#album-title {
+    font-size: 3rem;
+    margin: 0;
+}
+
+#sec-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 0.75rem;
+    margin: 5px 0 0 0;
+}
+

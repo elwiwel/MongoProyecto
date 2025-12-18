@@ -3,7 +3,7 @@ import "./Album.css";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Album({ img, title, artist, year, color }) {
+function Album({ id, img, title, artist, year, color }) {
 
     const navigate = useNavigate();
     const pref = useRef(null);
@@ -21,13 +21,7 @@ function Album({ img, title, artist, year, color }) {
         
         try {
 
-            const res = await fetch(`http://localhost:4000/api/albumes/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ title })
-                });
+            const res = await fetch(`http://localhost:4000/api/albumes/${id}`);
 
             const data = await res.json();
             navigate(`/album/${data._id}`);

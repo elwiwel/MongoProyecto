@@ -2,16 +2,14 @@ import "./Header.css";
 import searchicon from "../assets/img/lupa.svg";
 import home from "../assets/img/home.svg";
 import { Link } from "react-router-dom";
+import { use, useState } from "react";
 import { useEffect } from "react";
 
 function Header({setBusqueda}) {
 
-    
+    const [albumes, setAlbumes] = useState([]);
 
-    async function guardarAlbumes(e) {
-        e.preventDefault();
-        const busqueda = document.getElementById("search").value;
-        console.log("Buscando:", busqueda);
+    async function guardarAlbumes() {
 
         const res = await fetch(`http://localhost:4000/api/albumes`);
 
@@ -21,12 +19,18 @@ function Header({setBusqueda}) {
         }
 
         const data = await res.json();
+        console.log("Álbumes guardados en Header:", data);
         setAlbumes(data);
     }
 
+    useEffect(() => {
+        guardarAlbumes();
+    }, []);
+
     function buscar(e) {
-        e.preventDefault();
-        const resultados = albums.filter(album => 
+        const busqueda = e.target.value;
+        console.log(albumes);
+        const resultados = albumes.filter(album => 
             album.nombre.toLowerCase().includes(busqueda.toLowerCase())
         );
         console.log("Resultados de búsqueda:", resultados);

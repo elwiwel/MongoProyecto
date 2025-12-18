@@ -3,11 +3,20 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header.jsx";
 import Song from "../components/Song.jsx";
 import { useParams } from "react-router-dom";
+import AlbumHeader from "../components/AlbumHeader.jsx";
 
 function AlbumPage({setCurrentSongUrl}) {
 
+    const [albumDetails, setAlbumDetails] = useState({});
     const [songs, setSongs] = useState([]);
     const {id} = useParams();
+
+    async function albumInfo() {
+        const res = await fetch(`http://localhost:4000/api/albumes/${id}`);
+        const data = await res.json();
+        console.log("Datos del álbum:", data);
+        setAlbumDetails(data);
+    }
 
     async function fetchSongs() {
         try {
@@ -26,6 +35,7 @@ function AlbumPage({setCurrentSongUrl}) {
     }
 
     useEffect(() => {
+        albumInfo();
         fetchSongs(); // ⬅️ Se ejecuta SOLO al montar
     }, []);
 
@@ -35,9 +45,13 @@ function AlbumPage({setCurrentSongUrl}) {
             <Header />
 
             <div className="album-content">
-                <div className="album-header">
-                    <h1></h1>
-                </div>
+                
+                <AlbumHeader 
+                title={albumDetails.nombre}
+                artist={albumDetails.artista}
+                year={albumDetails.año}
+                img={albumDetails.img}
+                />
 
                 <div className="track-list">
                     {songs.map((track, index) => (
