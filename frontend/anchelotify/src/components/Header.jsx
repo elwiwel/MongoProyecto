@@ -1,13 +1,15 @@
 import "./Header.css";
 import searchicon from "../assets/img/lupa.svg";
 import home from "../assets/img/home.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { use, useState } from "react";
 import { useEffect } from "react";
 
-function Header({setBusqueda}) {
+function Header({setBusqueda, setArtist}) {
 
     const [albumes, setAlbumes] = useState([]);
+
+    const navigate = useNavigate();
 
     async function guardarAlbumes() {
 
@@ -29,7 +31,6 @@ function Header({setBusqueda}) {
 
     function buscar(e) {
         const busqueda = e.target.value;
-        console.log(albumes);
         const resultados = albumes.filter(album => 
             album.nombre.toLowerCase().includes(busqueda.toLowerCase())
         );
@@ -37,13 +38,20 @@ function Header({setBusqueda}) {
         setBusqueda(resultados);
     }
 
+    function volverHome() {
+        navigate("/main");
+        setArtist(null);
+        document.getElementById("search").value = "";
+        setBusqueda([]);
+    }
+
     return (
         <div id="header">
 
-            <div className="home"><Link to="/main" className="home-link"><img src={home} alt="Home" className="home-img" /></Link></div>
+            <div className="home"><img src={home} alt="Home" className="home-img" onClick={volverHome} /></div>
 
             <div id="flex">
-                <input id="search" type="text" placeholder="¿Qué quieres escuchar?" onChange={buscar}/>
+                <input id="search" type="text" placeholder="¿Qué quieres escuchar?" onChange={buscar} />
                 <img src={searchicon} alt="Buscar" className="lupa" onClick={buscar} />
             </div>
 

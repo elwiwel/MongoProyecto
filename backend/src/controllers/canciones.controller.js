@@ -26,7 +26,6 @@ class CancionesController {
             const cancion = await Cancion.findOne({_id: id});
             res.json(cancion);
             console.log("Canción obtenida:", cancion);
-            console.log("id archivo:", cancion.archivo);
         } catch (error) {
             console.error("No se ha obtenido la canción:", error);
         }

@@ -53,3 +53,14 @@
     align-items: center;
     border-radius: 50%;
 }
+
+.simbolo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simbolo img{
+    width: 1rem;
+    height: 1rem;
+}

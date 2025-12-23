@@ -3,7 +3,7 @@ import "./Song.css";
 
 
 
-function Song({ id, idArchivo, number, title, artist, album, duration, setCurrentSongUrl }) {
+function Song({ id, idArchivo, number, title, artist, album, duration, setCurrentSongUrl, setCurrentSongImg }) {
 
     function formatoDuracion(duracion) {
         const minutes = Math.floor(duracion / 60);
@@ -12,14 +12,31 @@ function Song({ id, idArchivo, number, title, artist, album, duration, setCurren
         return `${minutes}:${formattedSeconds}`;
     }
 
+    function songSelected() {
+        console.log(`Canción ${title} seleccionada`);
+        showSongImage();
+        getSongAudio();
+    }
+
+    async function showSongImage() {
+        console.log(id);
+        const res = await fetch(`http://localhost:4000/api/canciones/${id}`);
+        const data = await res.json();
+        const albumId = data.albumId;
+
+        console.log("Album ID:", albumId);
+        const albumRes = await fetch(`http://localhost:4000/api/albumes/${albumId}`);
+        const albumData = await albumRes.json();
+        setCurrentSongImg(albumData.img);
+    }
+
 
     async function getSongAudio() {
         try {
-            console.log(idArchivo);
             const API_URI = `http://localhost:4000/api/canciones/stream/${idArchivo}`
             const res = await fetch(API_URI);
-            
-            if(!res.ok){
+
+            if (!res.ok) {
                 console.error("Error al obtener canción");
                 return;
             }
@@ -37,7 +54,7 @@ function Song({ id, idArchivo, number, title, artist, album, duration, setCurren
     }
 
     return (
-        <div className="song-row" onClick={getSongAudio} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(30, 30, 30, 1)"} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgb(15, 15, 15)"}>
+        <div className="song-row" onClick={songSelected} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "rgba(30, 30, 30, 1)"} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgb(15, 15, 15)"}>
             <div className="izq">
                 <div className="song-number">{number}</div>
                 <div className="datos">

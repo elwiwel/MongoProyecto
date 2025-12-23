@@ -3,7 +3,7 @@ import "./Album.css";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Album({ id, img, title, artist, year, color }) {
+function Album({ id, img, title, artist, year, setArtist }) {
 
     const navigate = useNavigate();
     const pref = useRef(null);
@@ -14,6 +14,10 @@ function Album({ id, img, title, artist, year, color }) {
 
     function unhover() {
         pref.current.className = "album-cover";
+    }
+
+    function handleArtistClick() {
+        setArtist(artist);
     }
 
     async function handleClick() {
@@ -38,7 +42,7 @@ function Album({ id, img, title, artist, year, color }) {
             <h3 className="album-title" onMouseEnter={hover} onMouseLeave={unhover} onClick={handleClick}>{title}</h3>
             <div className="album-info">
                 <p className="album-year">{year}</p>
-                <p className="album-artist">{artist}</p>
+                <p className="album-artist" onClick={handleArtistClick}>{artist}</p>
             </div>
         </div>
     )

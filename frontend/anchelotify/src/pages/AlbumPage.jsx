@@ -5,7 +5,7 @@ import Song from "../components/Song.jsx";
 import { useParams } from "react-router-dom";
 import AlbumHeader from "../components/AlbumHeader.jsx";
 
-function AlbumPage({setCurrentSongUrl}) {
+function AlbumPage({setCurrentSongUrl, setCurrentSongImg}) {
 
     const [albumDetails, setAlbumDetails] = useState({});
     const [songs, setSongs] = useState([]);
@@ -65,6 +65,7 @@ function AlbumPage({setCurrentSongUrl}) {
                         album={track.album}
                         duration={track.duracion}
                         setCurrentSongUrl={setCurrentSongUrl}
+                        setCurrentSongImg={setCurrentSongImg}
                     />
                 ))} 
                 </div>

@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import "./AudioPlayer.css";
-import testcover from "../assets/img/alice.jpg";
+import play from "../assets/img/play.svg";
+import pause from "../assets/img/pause.svg";
 import { useLocation } from "react-router-dom";
 
-function AudioPlayer({ audioUrl }) {
+function AudioPlayer({ audioUrl, imgSrc }) {
 
     //Variables de estados para saber si está pausado y el tiempo
     const [isPlaying, setIsPlaying] = useState(false);
@@ -11,7 +12,7 @@ function AudioPlayer({ audioUrl }) {
     const [duration, setDuration] = useState(0);
 
     const audioRef = useRef(null);
-
+    const imgRef = useRef(null);
 
     const location = useLocation();
 
@@ -24,7 +25,15 @@ function AudioPlayer({ audioUrl }) {
         }
     }, [location])
 
-    
+
+    useEffect(() => {
+        if (imgSrc && imgRef.current) {
+            imgRef.current.src = imgSrc;
+            console.log("Imagen de la canción actualizada:", imgSrc);
+        }
+    }, [imgSrc]);
+
+
     useEffect(() => {
         if (audioUrl && audioRef.current) {
             const audio = audioRef.current;
@@ -32,6 +41,8 @@ function AudioPlayer({ audioUrl }) {
             setCurrentTime(0);
             setDuration(0);
             audio.addEventListener("timeupdate", handleTimeUpdate); //Lo puse para probar
+
+            
         
         audioRef.current.play()
             .then(() => setIsPlaying(true))
@@ -98,7 +109,7 @@ function AudioPlayer({ audioUrl }) {
 
     return (
         <div className="player">
-            <img src={testcover} alt="Portada" />
+            <img src={imgSrc} ref={imgRef} alt="Portada" />
 
             <div className="cancion">
                 {/* Input para seleccionar punto de la canción */}
@@ -122,7 +133,7 @@ function AudioPlayer({ audioUrl }) {
                 {/* Play/Pausa */}
                 <button onClick={handlePlayPause}>
                     <span className="simbolo">
-                        {isPlaying ? "II" : ">"}
+                        {isPlaying ? <img src={pause} alt="Pause" /> : <img src={play} alt="Play" /> }
                     </span>
                 </button>
             </div>

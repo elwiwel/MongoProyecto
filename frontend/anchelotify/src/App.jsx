@@ -10,6 +10,7 @@ import { useState } from "react";
 function App() {
 
   const [currentSongUrl, setcurrentSongUrl] = useState(null);
+  const [currentSongImg, setCurrentSongImg] = useState(null);
 
   return (
     <div>
@@ -18,10 +19,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/album/:id" element={<AlbumPage setCurrentSongUrl={setcurrentSongUrl}/>} />
+          <Route path="/album/:id" element={<AlbumPage setCurrentSongUrl={setcurrentSongUrl} setCurrentSongImg={setCurrentSongImg}/>} />
         </Routes>
       </div>
-      <AudioPlayer audioUrl={currentSongUrl}/>
+      <AudioPlayer audioUrl={currentSongUrl} imgSrc={currentSongImg}/>
     </div>
   )
 }

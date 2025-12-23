@@ -19,7 +19,6 @@ class AlbumesController {
         res.status(201).json({ status: 'ok', mensaje: 'Album creado' });
     };
 
-
     obtenerAlbum = async (req, res) => {
         try {
             const albumId = req.params.id;

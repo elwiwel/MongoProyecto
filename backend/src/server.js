@@ -32,7 +32,7 @@ app.use("/api/albumes", albumesRoutes);
 app.use("/api/usuarios", usuariosRoutes);
 app.use("/api/canciones", cancionesRoutes);
 
-app.get("/", (req, res) => {
+app.use((req, res) => {
     
     res.sendFile(path.join(reactDistPath, "index.html"));
 
