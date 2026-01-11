@@ -9,13 +9,13 @@ function Login() {
 
     const navigate = useNavigate();
 
-    function register() {
-
-    }
-
+    const alerta = document.querySelector("#alerta-text");
+    const alertaDiv = document.querySelector("#alerta-hidden");
 
     async function submit(ev) {
         ev.preventDefault();
+
+        alertaDiv.classList.contains("alerta") ? alertaDiv.classList.replace("alerta", "alerta-hidden") : null;
 
         const URL_API = "http://localhost:4000/api/usuarios/login";
 
@@ -23,7 +23,8 @@ function Login() {
         console.log("Password:", password);
 
         if (!correo || !password) {
-            alert("Rellene todos los campos, por favor");
+            alerta.innerHTML = "Rellene todos los campos, por favor";
+            alertaDiv.classList.replace("alerta-hidden", "alerta");
             return;
         }
         else {
@@ -41,11 +42,12 @@ function Login() {
 
                 const data = await res.json();
 
-                console.log(data);
-
                 if (data.contraseña === true) {
                     alert("Sesión iniciada correctamente");
                     navigate(`/main`);
+                } else if (data.contraseña === false || data.existe === false) {
+                    alerta.innerHTML = "El correo y/o la contraseña son incorrectos";
+                    alertaDiv.classList.replace("alerta-hidden", "alerta");
                 }
             }
             catch (error) {
@@ -69,7 +71,9 @@ function Login() {
                         <input type="password" id="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
                     </div>
 
-                    <button id="submit" type="submit" onClick={() => { console.log("Botón clicado") }}>Entrar</button>
+                    <div id="alerta-hidden" className="alerta-hidden"><p id="alerta-text"></p></div>
+
+                    <button id="submit" type="submit" >Entrar</button>
                 </form>
 
                 <p id="preg">¿No tienes una cuenta?</p>

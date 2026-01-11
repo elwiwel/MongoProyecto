@@ -1,4 +1,5 @@
 import Usuario from "../models/Usuario.js";
+import bcrypt from "bcryptjs";
 
 class UsuariosController {
 
@@ -17,8 +18,8 @@ class UsuariosController {
                 })
 
             } else {
-
-                const nuevoUsuario = await Usuario.create({ nombre: nombre, email: correo, contraseña: password });
+                const hashedPassword = await bcrypt.hash(password, 10)
+                const nuevoUsuario = await Usuario.create({ nombre: nombre, email: correo.toLowerCase(), contraseña: hashedPassword});
                 return res.json({
                     existe: false,
                     creado: true,
@@ -38,14 +39,12 @@ class UsuariosController {
 
             const usuario = await Usuario.findOne({ email: correo.toLowerCase() });
 
-            console.log(password);
-
-            console.log("Usuarios leídos")
-
             if (usuario) {
                 const { contraseña, ...usuarioSafe } = usuario._doc; //usuarioSafe coge todo menos la contraseña
 
-                if (password == contraseña) {
+                const isPasswordValid = await bcrypt.compare(password, contraseña);
+
+                if (isPasswordValid) {
                     return res.json({
                         existe: true,
                         contraseña: true
